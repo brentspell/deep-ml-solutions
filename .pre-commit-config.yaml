@@ -1,0 +1,32 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-ast
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff-check
+        language: system
+        entry: ruff check --fix
+        types: [python]
+      - id: ruff-format
+        name: ruff-format
+        language: system
+        entry: ruff format
+        types: [python]
+      - id: mypy
+        name: mypy
+        language: system
+        entry: mypy .
+        pass_filenames: false
+        always_run: true
+      - id: pytest
+        name: pytest
+        language: system
+        entry: python -m pytest --hypothesis-profile=ci
+        pass_filenames: false
+        always_run: true

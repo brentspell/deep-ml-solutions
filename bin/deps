@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+pip install --upgrade pip uv
+
+uv pip compile pyproject.toml \
+  --upgrade \
+  -o requirements.txt
+
+uv pip sync requirements.txt
+
+uv pip install -e .

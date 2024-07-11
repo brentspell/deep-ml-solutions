@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: install packages
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: run tests
+        env:
+          PYTHONPATH: .
+          COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
+        run: |
+          pytest --hypothesis-profile=ci --cov=deepml
+          ruff check
+          ruff format --check
+          mypy .
+          coveralls

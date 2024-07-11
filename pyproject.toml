@@ -1,0 +1,53 @@
+[project]
+name = "deep-ml-solutions"
+version = "0.0.2"
+description = "Solutions to the problems on deep-ml.com"
+authors = [{ name = "Brent M. Spell", email = "brent@brentspell.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+urls.Homepage = "https://github.com/brentspell/deep-ml-solutions"
+classifiers = [
+   "License :: OSI Approved :: MIT License",
+   "Programming Language :: Python",
+   "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.12"
+dependencies = [
+   # development
+   "mypy",
+   "pre-commit",
+   "pytest-watch",
+   "ruff",
+
+   # testing
+   "coveralls",
+   "hypothesis",
+   "pytest",
+   "pytest-benchmark",
+   "pytest-cov",
+
+   # ml
+   "numpy",
+]
+
+[tool.ruff]
+lint.extend-select = ["I"]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+python_files = "*.py"
+
+[tool.coverage.report]
+exclude_lines = [
+   "@abstractmethod",
+   "@abc.abstractmethod"
+]
