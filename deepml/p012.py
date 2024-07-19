@@ -23,10 +23,7 @@ def svd_2x2_singular_values(A: np.ndarray) -> tuple:
 
     s = np.array([(h1 + h2) / 2.0, abs(h1 - h2) / 2.0])
 
-    if h1 != h2:
-        V = np.diag(1.0 / s) @ U.T @ A
-    else:
-        V = np.diag([1.0 / s[0], 0]) @ U.T @ A
+    V = np.diag(1.0 / s) @ U.T @ A
 
     return U, s, V
 
