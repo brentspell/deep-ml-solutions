@@ -27,6 +27,6 @@ repos:
       - id: pytest
         name: pytest
         language: system
-        entry: python -m pytest --hypothesis-profile=ci
+        entry: python -m pytest
         pass_filenames: false
         always_run: true

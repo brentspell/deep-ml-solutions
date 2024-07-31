@@ -24,7 +24,7 @@ jobs:
           PYTHONPATH: .
           COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
         run: |
-          pytest --hypothesis-profile=ci --cov=deepml
+          pytest
           ruff check
           ruff format --check
           mypy .

@@ -45,6 +45,7 @@ warn_unreachable = true
 
 [tool.pytest.ini_options]
 python_files = "*.py"
+addopts = "--cov=deepml --cov-fail-under=100 --hypothesis-profile=ci"
 
 [tool.coverage.report]
 exclude_lines = [
