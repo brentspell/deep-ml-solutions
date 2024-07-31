@@ -46,3 +46,12 @@ def test_pegasos_kernel_svm() -> None:
     alphas, b = pegasos_kernel_svm(data, labels, kernel, lambda_val, iterations)
     assert alphas == [100.0, 99.0, -100.0, -100.0]
     assert b == -150.0
+
+    data = np.array([[1, 2], [2, 3], [3, 1], [4, 1]])
+    labels = np.array([1, 1, -1, -1])
+    kernel = "linear"
+    lambda_val = 0.01
+    iterations = 100
+    alphas, b = pegasos_kernel_svm(data, labels, kernel, lambda_val, iterations)
+    assert alphas == [100.0, 0.0, -100.0, -100.0]
+    assert b == -937.4755
